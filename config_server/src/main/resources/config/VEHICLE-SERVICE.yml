@@ -1,10 +1,8 @@
 server:
-  port: 8089
+  port: 8081
 spring:
   application:
-    name: CONFIG-SERVER
-  profiles:
-    active: native
+      name: VEHICLE-SERVICE
   cloud:
     config:
       server:
@@ -13,9 +11,21 @@ spring:
           username: Ksandeepa07
           password: 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
           default-label: "master"
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-        defaultZone: http://localhost:8761/eureka/
+
+
+
+
+
+
+
+
+
+
+
+
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
