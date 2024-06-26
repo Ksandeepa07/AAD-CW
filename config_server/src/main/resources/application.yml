@@ -4,12 +4,12 @@ spring:
   application:
     name: CONFIG-SERVER
   profiles:
-    active: native
+    active: dev
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/Ksandeepa07/AAD-CW/tree/master/config_server
+          uri: https://github.com/Ksandeepa07/AAD-CW-CONFIG
           username: Ksandeepa07
           password: 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
           default-label: "master"
@@ -19,3 +19,4 @@ eureka:
     fetch-registry: true
     service-url:
         defaultZone: http://localhost:8761/eureka/
+

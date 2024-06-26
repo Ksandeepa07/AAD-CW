@@ -2,4 +2,7 @@ spring:
   application:
     name: VEHICLE-SERVICE
   config:
-    import: "optional:configserver:https://github.com/Ksandeepa07/AAD-CW/tree/master/config_server"
+    import: "optional:configserver:http://localhost:8089"
+  profiles:
+    active: dev
+

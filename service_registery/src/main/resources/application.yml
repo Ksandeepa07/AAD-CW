@@ -4,3 +4,9 @@ eureka:
   client:
     fetch-registry: false
     register-with-eureka: false
+spring:
+  cloud:
+    config:
+      allow-override: true
+  profiles:
+    active: dev
