@@ -1,6 +1,7 @@
 package lk.ijse.vehicle_service.service;
 
 import lk.ijse.vehicle_service.dto.VehicleDTO;
+import lk.ijse.vehicle_service.entity.User;
 import lk.ijse.vehicle_service.entity.Vehicle;
 import lk.ijse.vehicle_service.repo.VehicleRepo;
 import lk.ijse.vehicle_service.service.exception.DuplicateRecordException;
@@ -35,7 +36,7 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public boolean delete(String vehicleId) {
+    public boolean delete(Integer vehicleId) {
         if (vehicleRepo.existsById(vehicleId)){
             vehicleRepo.deleteById(vehicleId);
             return true;

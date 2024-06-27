@@ -27,7 +27,7 @@ public class TicketController {
     public TicketDTO save(@RequestBody TicketDTO ticketDTO){
         try {
             System.out.println(ticketDTO);
-            Boolean isExist = restTemplate.postForObject("http://USER-SERVICE/api/v1/users/findById", ticketDTO.getU_id(), Boolean.class);
+            Boolean isExist = restTemplate.getForObject("http://USER-SERVICE/api/v1/users/findById/"+ticketDTO.getU_id(), Boolean.class);
             if (Boolean.TRUE.equals(isExist)){
                 return ticketService.save(ticketDTO);
             }
@@ -42,7 +42,8 @@ public class TicketController {
     public TicketDTO update(@RequestBody TicketDTO ticketDTO){
         try {
             System.out.println(ticketDTO);
-            Boolean isExist = restTemplate.postForObject("http://USER-SERVICE/api/v1/users/findById", ticketDTO.getU_id(), Boolean.class);
+            Boolean isExist = restTemplate.getForObject("http://USER-SERVICE/api/v1/users/findById/"+ticketDTO.getU_id(), Boolean.class);
+
             if (Boolean.TRUE.equals(isExist)){
                 return ticketService.update(ticketDTO);
             }
@@ -54,7 +55,7 @@ public class TicketController {
     }
 
     @DeleteMapping("/delete/{ticketId}")
-    public boolean delete(@PathVariable String ticketId){
+    public boolean delete(@PathVariable int ticketId){
 
         try {
             System.out.println(ticketId);

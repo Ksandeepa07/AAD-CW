@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean existById(String userId) {
+    public boolean existById(Integer userId) {
         if (userRepo.existsById(userId)){
             return true;
         }else {

@@ -28,7 +28,7 @@ public class VehicleController {
 
         try {
             System.out.println(vehicleDTO);
-            Boolean isExist = restTemplate.postForObject("http://USER-SERVICE/api/v1/users/findById", vehicleDTO.getU_id(), Boolean.class);
+            Boolean isExist = restTemplate.getForObject("http://USER-SERVICE/api/v1/users/findById/"+vehicleDTO.getU_id(), Boolean.class);
             if (Boolean.TRUE.equals(isExist)){
                 return vehicleService.save(vehicleDTO);
             }
@@ -44,7 +44,7 @@ public class VehicleController {
 
         try {
             System.out.println(vehicleDTO);
-            Boolean isExist = restTemplate.postForObject("http://USER-SERVICE/api/v1/users/findById", vehicleDTO.getU_id(), Boolean.class);
+            Boolean isExist = restTemplate.getForObject("http://USER-SERVICE/api/v1/users/findById/"+vehicleDTO.getU_id(), Boolean.class);
             if (Boolean.TRUE.equals(isExist)){
                 return vehicleService.update(vehicleDTO);
             }
@@ -57,7 +57,7 @@ public class VehicleController {
     }
 
     @DeleteMapping("/delete/{vehicleId}")
-    public boolean delete(@PathVariable String vehicleId){
+    public boolean delete(@PathVariable Integer vehicleId){
 
         try {
             System.out.println(vehicleId);

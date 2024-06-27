@@ -18,7 +18,7 @@ public class TicketServiceImpl implements TicketService{
     private ModelMapper mapper;
     @Override
     public TicketDTO save(TicketDTO ticketDTO) {
-        if (ticketRepo.existsById(String.valueOf(ticketDTO.getT_id()))){
+        if (ticketRepo.existsById((ticketDTO.getT_id()))){
             throw new DuplicateRecordException("this ticket id already exist!!!");
         }
       return mapper.map(ticketRepo.save(mapper.map(ticketDTO,Ticket.class)),TicketDTO.class);
@@ -26,7 +26,7 @@ public class TicketServiceImpl implements TicketService{
 
     @Override
     public TicketDTO update(TicketDTO ticketDTO) {
-        if (ticketRepo.existsById(String.valueOf(ticketDTO.getT_id()))){
+        if (ticketRepo.existsById(ticketDTO.getT_id())){
             return mapper.map(ticketRepo.save(mapper.map(ticketDTO,Ticket.class)),TicketDTO.class);
 
         }
@@ -34,7 +34,7 @@ public class TicketServiceImpl implements TicketService{
     }
 
     @Override
-    public boolean delete(String ticketId) {
+    public boolean delete(int ticketId) {
         if (ticketRepo.existsById(ticketId)){
              ticketRepo.deleteById(ticketId);
              return true;

@@ -16,6 +16,16 @@ spring:
             uri: lb://USER-SERVICE
             predicates:
               - path=/api/v1/users/**
+
+          - id: TICKET-SERVICE
+            uri: lb://TICKET-SERVICE
+            predicates:
+              - path=/api/v1/tickets/**
+
+          - id: PAYMENT-SERVICE
+            uri: lb://PAYMENT-SERVICE
+            predicates:
+              - path=/api/v1/payments/**
 eureka:
   client:
     register-with-eureka: true

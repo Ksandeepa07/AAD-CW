@@ -17,5 +17,5 @@ public class TicketDTO {
     private String route;
     private int price;
     private String distance;
-    private String u_id;
+    private int u_id;
 }

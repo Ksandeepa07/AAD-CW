@@ -1,9 +1,6 @@
 package lk.ijse.vehicle_service.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,12 +11,15 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Vehicle {
     @Id
-    private String v_id;
+    private int v_id;
     private String brand;
     private String license_plate_num;
     private String capacity;
     @ManyToOne
     @JoinColumn(name = "u_id")
     private User u_id;
+
+    @OneToOne(mappedBy = "v_id")
+    private Payment payment;
 
 }

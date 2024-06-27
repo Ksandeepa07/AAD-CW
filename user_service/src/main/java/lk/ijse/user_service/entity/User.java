@@ -3,9 +3,9 @@ package lk.ijse.user_service.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
-import org.modelmapper.internal.bytebuddy.dynamic.loading.InjectionClassLoader;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -13,9 +13,17 @@ import org.modelmapper.internal.bytebuddy.dynamic.loading.InjectionClassLoader;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int u_id;
     @Column(unique = true)
     private String email;
     private String password;
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "u_id")
+    private List<Vehicle> vehicles;
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "u_id")
+    private List<Ticket> tickets;
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "u_id")
+    private List<Payment> payments;
 }

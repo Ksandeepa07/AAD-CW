@@ -13,13 +13,17 @@ import java.util.List;
 @Entity
 public class User {
     @Id
-    private String u_id;
+    private int u_id;
     @Column(unique = true)
     private String email;
     private String password;
+
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "u_id")
     private List<Vehicle> vehicles;
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "u_id")
     private List<Ticket> tickets;
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "u_id")
+    private List<Payment> payments;
 }

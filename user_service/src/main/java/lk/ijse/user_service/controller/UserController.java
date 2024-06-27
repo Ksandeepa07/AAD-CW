@@ -32,8 +32,8 @@ public class UserController {
         return "Login failed!!";
     }
 
-    @PostMapping("/findById")
-    public Boolean findById(@RequestBody String userId){
+    @GetMapping("/findById/{userId}")
+    public Boolean findById(@PathVariable Integer userId){
         System.out.println("user id is "+userId);
         return userService.existById(userId);
 

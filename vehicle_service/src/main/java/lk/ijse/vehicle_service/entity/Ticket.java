@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Ticket {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int t_id;
     private String route;
     private int price;
@@ -19,4 +18,7 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "u_id")
     private User u_id;
+
+    @OneToOne(mappedBy = "t_id")
+    private Payment payment;
 }
