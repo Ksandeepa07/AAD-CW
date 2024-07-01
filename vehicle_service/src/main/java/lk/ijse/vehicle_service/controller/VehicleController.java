@@ -1,6 +1,6 @@
 package lk.ijse.vehicle_service.controller;
 
-import lk.ijse.vehicle_service.dto.UserDTO;
+import jakarta.validation.Valid;
 import lk.ijse.vehicle_service.dto.VehicleDTO;
 import lk.ijse.vehicle_service.service.VehicleService;
 import lk.ijse.vehicle_service.service.exception.NotFoundException;
@@ -24,7 +24,7 @@ public class VehicleController {
     }
 
     @PostMapping("/save")
-    public VehicleDTO save(@RequestBody VehicleDTO vehicleDTO){
+    public VehicleDTO save(@Valid @RequestBody VehicleDTO vehicleDTO){
 
         try {
             System.out.println(vehicleDTO);
@@ -40,7 +40,7 @@ public class VehicleController {
     }
 
     @PatchMapping("/update")
-    public VehicleDTO update(@RequestBody VehicleDTO vehicleDTO){
+    public VehicleDTO update(@Valid @RequestBody VehicleDTO vehicleDTO){
 
         try {
             System.out.println(vehicleDTO);
@@ -66,6 +66,13 @@ public class VehicleController {
         }catch (Exception e){
             throw new NotFoundException(e.getMessage());
         }
+
+    }
+
+    @GetMapping("/findById/{vehicleId}")
+    public Boolean findById(@PathVariable Integer vehicleId){
+        System.out.println("vehicle id is "+vehicleId);
+        return vehicleService.existById(vehicleId);
 
     }
 }

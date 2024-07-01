@@ -1,9 +1,9 @@
-package lk.ijse.user_service.advise;
+package lk.ijse.payment_service.advise;
 
-import lk.ijse.user_service.service.exception.DuplicateRecordException;
-import lk.ijse.user_service.service.exception.NotFoundException;
 
-import lk.ijse.user_service.service.exception.ServiceException;
+import lk.ijse.payment_service.service.exception.DuplicateRecordException;
+import lk.ijse.payment_service.service.exception.NotFoundException;
+import lk.ijse.payment_service.service.exception.ServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

@@ -45,4 +45,13 @@ public class VehicleServiceImpl implements VehicleService {
         throw new NotFoundException("Can't find user with this id!!");
 
     }
+
+    @Override
+    public boolean existById(Integer vehicleId) {
+        if (vehicleRepo.existsById(vehicleId)){
+            return true;
+        }else {
+            throw new NotFoundException("Can't find vehicle id!!");
+        }
+    }
 }

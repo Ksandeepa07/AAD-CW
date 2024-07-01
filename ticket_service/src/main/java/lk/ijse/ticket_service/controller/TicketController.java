@@ -1,5 +1,6 @@
 package lk.ijse.ticket_service.controller;
 
+import jakarta.validation.Valid;
 import lk.ijse.ticket_service.dto.TicketDTO;
 import lk.ijse.ticket_service.service.TicketService;
 import lk.ijse.ticket_service.service.exception.NotFoundException;
@@ -24,7 +25,8 @@ public class TicketController {
     }
 
     @PostMapping("/save")
-    public TicketDTO save(@RequestBody TicketDTO ticketDTO){
+    public TicketDTO save(@Valid @RequestBody TicketDTO ticketDTO){
+
         try {
             System.out.println(ticketDTO);
             Boolean isExist = restTemplate.getForObject("http://USER-SERVICE/api/v1/users/findById/"+ticketDTO.getU_id(), Boolean.class);
@@ -38,8 +40,8 @@ public class TicketController {
         return null;
     }
 
-    @PatchExchange("/update")
-    public TicketDTO update(@RequestBody TicketDTO ticketDTO){
+    @PatchMapping("/update")
+    public TicketDTO update(@Valid @RequestBody TicketDTO ticketDTO){
         try {
             System.out.println(ticketDTO);
             Boolean isExist = restTemplate.getForObject("http://USER-SERVICE/api/v1/users/findById/"+ticketDTO.getU_id(), Boolean.class);
@@ -64,6 +66,13 @@ public class TicketController {
         }catch (Exception e){
             throw new NotFoundException(e.getMessage());
         }
+
+    }
+
+    @GetMapping("/findById/{ticketId}")
+    public Boolean findById(@PathVariable Integer ticketId){
+        System.out.println("ticket id is "+ticketId);
+        return ticketService.existById(ticketId);
 
     }
 }

@@ -1,7 +1,8 @@
 package lk.ijse.user_service.controller;
 
+import jakarta.validation.Valid;
 import lk.ijse.user_service.dto.UserDTO;
-import lk.ijse.user_service.dto.VehicleDTO;
+
 import lk.ijse.user_service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +18,13 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public UserDTO register(@RequestBody UserDTO userDTO){
+    public UserDTO register(@Valid @RequestBody UserDTO userDTO){
         System.out.println(userDTO);
        return userService.save(userDTO);
     }
 
     @PostMapping("/login")
-    public String  findById(@RequestBody UserDTO userDTO){
+    public String  findById(@Valid @RequestBody UserDTO userDTO){
         System.out.println(userDTO);
         boolean isLogged = userService.login(userDTO);
         if (isLogged){

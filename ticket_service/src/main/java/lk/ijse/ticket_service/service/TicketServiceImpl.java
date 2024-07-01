@@ -41,4 +41,13 @@ public class TicketServiceImpl implements TicketService{
         }
         throw new NotFoundException("Can't find ticket with this id!!");
     }
+
+    @Override
+    public boolean existById(Integer ticketId) {
+        if (ticketRepo.existsById(ticketId)){
+            return true;
+        }else {
+            throw new NotFoundException("Can't find ticket id!!");
+        }
+    }
 }

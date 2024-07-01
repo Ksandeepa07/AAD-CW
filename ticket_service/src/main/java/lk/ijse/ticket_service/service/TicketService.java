@@ -6,4 +6,5 @@ public interface TicketService {
     TicketDTO save(TicketDTO ticketDTO);
     TicketDTO update(TicketDTO ticketDTO);
     boolean delete(int ticketId);
+    boolean existById(Integer ticketId);
 }
